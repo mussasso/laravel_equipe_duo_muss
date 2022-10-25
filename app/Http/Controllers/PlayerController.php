@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Player;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PlayerController extends Controller
 {
@@ -14,7 +15,8 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        //
+        $players= Player::all();
+        return view('pages.players.players', compact('players'));
     }
 
     /**
@@ -24,7 +26,8 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        //
+        $players = Player::all();
+        return view('pages.players.form', compact('players'));
     }
 
     /**
@@ -35,7 +38,22 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store= new Player();
+        $store->name=$request->name;
+        $store->lastname=$request->lastname;
+        $store->age=$request->age;
+        $store->phone=$request->phone;
+        $store->email=$request->email;
+        $store->genre=$request->genre;
+        $store->pays=$request->pays;
+        $store->role_id=$request->role_id;
+        $store->team_id=$request->team_id;
+        $store->photo_id=$request->file('image')->hashName();
+        Storage::put('public/img/', $request->file('image'));
+
+
+        $store->save();
+        return redirect('/');
     }
 
     /**
@@ -46,7 +64,7 @@ class PlayerController extends Controller
      */
     public function show(Player $player)
     {
-        //
+        return view('pages.players.show', compact('player'));
     }
 
     /**
@@ -57,7 +75,7 @@ class PlayerController extends Controller
      */
     public function edit(Player $player)
     {
-        //
+        return view('pages.players.edit', compact('player'));
     }
 
     /**
@@ -69,7 +87,21 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        //
+        Storage::delete('public/img/'.$player->photo_id);
+        $player->delete();
+        $player->name=$request->name;
+        $player->lastname=$request->lastname;
+        $player->age=$request->age;
+        $player->phone=$request->phone;
+        $player->email=$request->email;
+        $player->genre=$request->genre;
+        $player->pays=$request->pays;
+        $player->role_id=$request->role_id;
+        $player->team_id=$request->team_id;
+        $player->photo_id=$request->file('image')->hashName();
+        Storage::put('public/img/', $request->file('image'));
+        $player->save();
+        return redirect('/');
     }
 
     /**
@@ -80,6 +112,7 @@ class PlayerController extends Controller
      */
     public function destroy(Player $player)
     {
-        //
+        $player->delete();
+        return redirect('/');
     }
 }

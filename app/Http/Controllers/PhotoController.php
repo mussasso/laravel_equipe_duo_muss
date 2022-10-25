@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
@@ -14,7 +15,8 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        //
+        $photo= Photo::all();
+        return view('pages.photo.photo', compact('photo'));
     }
 
     /**
@@ -24,7 +26,9 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('pages.photo.form', compact('continent'));
+
     }
 
     /**
@@ -35,7 +39,9 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store= new Photo();
+        $store->image=$request->file('image')->hashName();
+        Storage::put('public/img/', $request->file('image'));
     }
 
     /**
@@ -46,7 +52,8 @@ class PhotoController extends Controller
      */
     public function show(Photo $photo)
     {
-        //
+        return view('pages.photo.show', compact('photo'));
+
     }
 
     /**
@@ -57,7 +64,7 @@ class PhotoController extends Controller
      */
     public function edit(Photo $photo)
     {
-        //
+        return view('pages.photo.edit', compact('photo'));
     }
 
     /**
@@ -69,7 +76,13 @@ class PhotoController extends Controller
      */
     public function update(Request $request, Photo $photo)
     {
-        //
+        Storage::delete('public/img/'.$photo->image);
+        $photo->delete();
+        $photo->image=$request->file('image')->hashName();
+        Storage::put('public/img/', $request->file('image'));
+        $photo->save();
+        return redirect('/');
+        
     }
 
     /**
@@ -80,6 +93,7 @@ class PhotoController extends Controller
      */
     public function destroy(Photo $photo)
     {
-        //
+        $photo->delete();
+        return redirect('/');
     }
 }
