@@ -1,4 +1,4 @@
 @extends('layout.back')
 @section('content')
-    @include('pages.Alltable')
+    @include('partials.Addteam')
 @endsection

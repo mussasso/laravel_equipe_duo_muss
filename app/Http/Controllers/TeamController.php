@@ -16,7 +16,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = Team::all();
+        $teams = Team::all()->take(3);
         $continents = Continent::all();
         return view('welcome',compact('teams','continents'));
     }
@@ -30,7 +30,7 @@ class TeamController extends Controller
     {
         $teams = Team::all();
         $continents = Continent::all();
-        return view('/forms',compact('teams','continents'));
+        return view('pages.Addteam',compact('teams','continents'));
     }
 
     /**
@@ -45,13 +45,16 @@ class TeamController extends Controller
             'name'=> 'required',
             'city'=> 'required',
             'land'=> 'required',
-            'role'=> 'required',
+            'maxplayers'=> 'required',
+            // 'role'=> 'required',
             'continent_id'=> 'required',
         ]);
         $store = new Team();
         $store->name = $request->name; 
+        $store->land = $request->land; 
         $store->city = $request->city; 
-        $store->role = $request->role; 
+        // $store->role = $request->role; 
+        $store->maxplayers = $request->maxplayers; 
         $store->continent_id = $request->continent_id;
         $store->save();
         return redirect('/')->with('success', "Vous avez ajouté une équipe");
@@ -92,13 +95,15 @@ class TeamController extends Controller
             'name'=> 'required',
             'city'=> 'required',
             'land'=> 'required',
-            'role'=> 'required',
+            // 'role'=> 'required',
             'continent_id'=> 'required',
         ]);
         $team = new Team();
         $team->name = $request->name; 
+        $team->land = $request->land; 
         $team->city = $request->city; 
-        $team->role = $request->role; 
+        // $team->role = $request->role; 
+        $team->maxplayers = $request->maxplayers; 
         $team->continent_id = $request->continent_id;
         $team->save();
         return redirect('/')->with('success', "Vous avez modifié une équipe");
@@ -120,5 +125,10 @@ class TeamController extends Controller
         $teams = Team::all();
         $continents = Continent::all();
         return view('backoffice',compact('teams', 'continents'));
+    }
+
+    public function allteam(){
+        $allteams = Team::all();
+        return view('pages.Allteams',compact('allteams'));
     }
 }

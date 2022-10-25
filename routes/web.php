@@ -15,3 +15,7 @@ Route::get('/backoffice',[TeamController::class,'backoffice'])->name('backoffice
 //Welcome 
 
 Route::get('/',[TeamController::class, 'index']);
+
+// Allteam
+
+Route::get('/allteam', [TeamController::class, 'allteam'])->name('allteam');

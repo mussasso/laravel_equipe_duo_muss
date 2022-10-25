@@ -22,6 +22,7 @@ class TeamFactory extends Factory
             'name' => $this->faker->name(),
             'city' => $this->faker->city(),
             'land' => $this->faker->country(),
+            'maxplayers' => $this->faker->numberBetween(12,12),
             'role' => $role[rand(1,count($role)-1)],
             'continent_id' => Continent::inRandomOrder()->first()->id
         ];
