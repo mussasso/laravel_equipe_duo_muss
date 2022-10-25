@@ -68,7 +68,8 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        return view('pages.Team.Showteam');
+        $continent = Continent::all();
+        return view('pages.Team.Showteam', compact('team','continent'));
     }
 
     /**
@@ -79,7 +80,8 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        return view('pages.Team.Editteam');
+        $continent = Continent::all();
+        return view('pages.Team.Backeditteam',compact('team','continent'));
     }
 
     /**
@@ -130,5 +132,10 @@ class TeamController extends Controller
     public function allteam(){
         $allteams = Team::all();
         return view('pages.Allteams',compact('allteams'));
+    }
+
+    public function showteamtable($id){
+        $team = Team::find($id);
+        return view('pages.Team.BackShowteam', compact('team'));
     }
 }
