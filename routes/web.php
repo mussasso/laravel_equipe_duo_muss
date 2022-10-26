@@ -1,18 +1,28 @@
 <?php
 
+use App\Http\Controllers\ContinentController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::resource('/team', TeamController::class);
+Route::resource('/continent', ContinentController::class);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Backoffice Team
+Route::get('/backoffice',[TeamController::class,'backoffice'])->name('backoffice');
+
+// Backoffice Show Team
+
+Route::get('/team/table/{id}', [TeamController::class, 'showteamtable']);
+
+//Welcome 
+
+Route::get('/',[TeamController::class, 'index']);
+
+// Allteam
+
+Route::get('/allteam', [TeamController::class, 'allteam'])->name('allteam');
+
+
+
+

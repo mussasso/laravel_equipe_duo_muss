@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('city');
             $table->string('land');
-            $table->string('role');
+            $table->integer('maxplayers');
+            $table->string('role')->nullable();
             $table->foreignId('continent_id')->constrained();
             $table->timestamps();
         });

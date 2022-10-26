@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Continent;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Mailables\Content;
 
 class ContinentController extends Controller
 {
@@ -14,8 +15,8 @@ class ContinentController extends Controller
      */
     public function index()
     {
-        $continent= Continent::all();
-        return view('', compact('continent'));
+        $continents= Continent::all();
+        return view('welcome', compact('continents'));
     }
 
     /**

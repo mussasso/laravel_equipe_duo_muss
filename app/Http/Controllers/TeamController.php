@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Continent;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TeamController extends Controller
 {
@@ -14,7 +16,9 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        $teams = Team::all()->take(3);
+        $continents = Continent::all();
+        return view('welcome',compact('teams','continents'));
     }
 
     /**
@@ -24,7 +28,9 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        $teams = Team::all();
+        $continents = Continent::all();
+        return view('pages.Addteam',compact('teams','continents'));
     }
 
     /**
@@ -35,7 +41,23 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=> 'required',
+            'city'=> 'required',
+            'land'=> 'required',
+            'maxplayers'=> 'required',
+            // 'role'=> 'required',
+            'continent_id'=> 'required',
+        ]);
+        $store = new Team();
+        $store->name = $request->name; 
+        $store->land = $request->land; 
+        $store->city = $request->city; 
+        // $store->role = $request->role; 
+        $store->maxplayers = $request->maxplayers; 
+        $store->continent_id = $request->continent_id;
+        $store->save();
+        return redirect('/')->with('success', "Vous avez ajouté une équipe");
     }
 
     /**
@@ -46,7 +68,8 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        //
+        $continent = Continent::all();
+        return view('pages.Team.Showteam', compact('team','continent'));
     }
 
     /**
@@ -57,7 +80,8 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        //
+        $continent = Continent::all();
+        return view('pages.Team.Backeditteam',compact('team','continent'));
     }
 
     /**
@@ -69,7 +93,22 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
-        //
+        $request->validate([
+            'name'=> 'required',
+            'city'=> 'required',
+            'land'=> 'required',
+            // 'role'=> 'required',
+            'continent_id'=> 'required',
+        ]);
+        $team = new Team();
+        $team->name = $request->name; 
+        $team->land = $request->land; 
+        $team->city = $request->city; 
+        // $team->role = $request->role; 
+        $team->maxplayers = $request->maxplayers; 
+        $team->continent_id = $request->continent_id;
+        $team->save();
+        return redirect('/')->with('success', "Vous avez modifié une équipe");
     }
 
     /**
@@ -80,6 +119,23 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        //
+        $team->delete();
+        return redirect('/')->with('success', "Vous avez supprimé une équipe");
+    }
+
+    public function backoffice(){
+        $teams = Team::all();
+        $continents = Continent::all();
+        return view('backoffice',compact('teams', 'continents'));
+    }
+
+    public function allteam(){
+        $allteams = Team::all();
+        return view('pages.Allteams',compact('allteams'));
+    }
+
+    public function showteamtable($id){
+        $team = Team::find($id);
+        return view('pages.Team.BackShowteam', compact('team'));
     }
 }
