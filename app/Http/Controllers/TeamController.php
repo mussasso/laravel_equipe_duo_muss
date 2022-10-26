@@ -17,8 +17,12 @@ class TeamController extends Controller
     public function index()
     {
         $teams = Team::all()->take(3);
+        $completeteam = Team::all()->Where('maxplayers',"=",9);
+        $uncompleteteam = Team::all()->take(2)->Where('maxplayers',">=",9);
+        $europeteam = Team::all()->Where('continent_id',"=","Europe");
+        $others = Team::all()->Where('continent_id',"=","Amerique");
         $continents = Continent::all();
-        return view('welcome',compact('teams','continents'));
+        return view('welcome',compact('teams','continents','completeteam','uncompleteteam','europeteam','others'));
     }
 
     /**
@@ -46,14 +50,12 @@ class TeamController extends Controller
             'city'=> 'required',
             'land'=> 'required',
             'maxplayers'=> 'required',
-            // 'role'=> 'required',
             'continent_id'=> 'required',
         ]);
         $store = new Team();
         $store->name = $request->name; 
         $store->land = $request->land; 
         $store->city = $request->city; 
-        // $store->role = $request->role; 
         $store->maxplayers = $request->maxplayers; 
         $store->continent_id = $request->continent_id;
         $store->save();
@@ -97,14 +99,12 @@ class TeamController extends Controller
             'name'=> 'required',
             'city'=> 'required',
             'land'=> 'required',
-            // 'role'=> 'required',
             'continent_id'=> 'required',
         ]);
         $team = new Team();
         $team->name = $request->name; 
         $team->land = $request->land; 
         $team->city = $request->city; 
-        // $team->role = $request->role; 
         $team->maxplayers = $request->maxplayers; 
         $team->continent_id = $request->continent_id;
         $team->save();
