@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('attack');
-            $table->string('middle');
-            $table->string('defence');
-            $table->string('substitute');
+            $table->string('attack')->when(1,2);
+            $table->string('middle')->when(1,2);
+            $table->string('defence')->when(1,2);
+            $table->string('substitute')->when(1,9);
             $table->timestamps();
         });
     }

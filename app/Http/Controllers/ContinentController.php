@@ -26,7 +26,7 @@ class ContinentController extends Controller
      */
     public function create()
     {
-        //
+        return view('', compact('continent'));
     }
 
     /**
@@ -48,7 +48,7 @@ class ContinentController extends Controller
      */
     public function show(Continent $continent)
     {
-        //
+        return view('', compact('continent'));
     }
 
     /**
@@ -59,7 +59,7 @@ class ContinentController extends Controller
      */
     public function edit(Continent $continent)
     {
-        //
+        return view('', compact('continent'));
     }
 
     /**

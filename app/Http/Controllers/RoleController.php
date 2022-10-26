@@ -14,7 +14,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::all();
+        return view('pages.role.role', compact('roles'));
     }
 
     /**
@@ -24,7 +25,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('pages.role.form', compact('roles'));
     }
 
     /**
@@ -35,7 +37,16 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store= new Role();
+        $store->attack=$request->attack;
+        $store->middle=$request->middle;
+        $store->defence=$request->defence;
+        $store->substitute=$request->substitute;
+        
+
+
+        $store->save();
+        return redirect('/');
     }
 
     /**
@@ -46,7 +57,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        //
+        return view('pages.role.show', compact('role'));
     }
 
     /**
@@ -57,7 +68,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        return view('pages.players.edit', compact('player'));
     }
 
     /**
@@ -69,7 +80,16 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+
+        $role->attack=$request->attack;
+        $role->middle=$request->middle;
+        $role->defence=$request->defence;
+        $role->substitute=$request->substitute;
+        
+
+
+        $role->save();
+        return redirect('/');
     }
 
     /**
@@ -80,6 +100,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return redirect('/');
     }
 }

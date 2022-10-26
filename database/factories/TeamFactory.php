@@ -17,13 +17,13 @@ class TeamFactory extends Factory
      */
     public function definition()
     {
-        $role = ["Attack","Defence","Middle","Substitute"];
+        // $role = ["Attack","Defence","Middle","Substitute"];
         return [
             'name' => $this->faker->name(),
             'city' => $this->faker->city(),
             'land' => $this->faker->country(),
-            'maxplayers' => $this->faker->numberBetween(12,12),
-            'role' => $role[rand(1,count($role)-1)],
+            'maxplayers' => $this->faker->numberBetween(1,9),
+            // 'role' => $role[rand(1,count($role)-1)],
             'continent_id' => Continent::inRandomOrder()->first()->id
         ];
     }
