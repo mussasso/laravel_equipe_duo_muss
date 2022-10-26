@@ -20,7 +20,7 @@ class ContinentSeeder extends Seeder
                 "continent" => "Europe",
             ],
             [
-                "continent" => "Amerique du nord",
+                "continent" => "Amerique",
             ],
             [
                 "continent" => "Afrique",

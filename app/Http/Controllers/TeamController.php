@@ -18,9 +18,9 @@ class TeamController extends Controller
     {
         $teams = Team::all()->take(3);
         $completeteam = Team::all()->Where('maxplayers',"=",9);
-        $uncompleteteam = Team::all()->take(2)->Where('maxplayers',">=",9);
+        $uncompleteteam = Team::all()->where('maxplayers','>',[9]);
         $europeteam = Team::all()->Where('continent_id',"=","Europe");
-        $others = Team::all()->Where('continent_id',"=","Amerique");
+        $others = Team::all()->Where('$continent->continent',"!=","Europe");
         $continents = Continent::all();
         return view('welcome',compact('teams','continents','completeteam','uncompleteteam','europeteam','others'));
     }
