@@ -1,6 +1,6 @@
 <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800 my-6">
     <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Ajouter une équipe</h2>
-    <form action="/team" method="post">
+    <form action="/player" method="post">
         @csrf
         <div>
             <label class="text-gray-700 dark:text-gray-200" for="username">Name</label>
@@ -40,14 +40,14 @@
         <div>
             <select name="team_id">
                 @foreach ($team as $teams)
-                    <option value="{{$teams->id}}">{{$teams->continent}}</option>
+                    <option value="{{$teams->id}}">{{$teams->name}}</option>
                 @endforeach
             </select>
         </div>
         <div>
             <select name="photo_id">
                 @foreach ($photo as $photos)
-                    <option value="{{$photos->id}}">{{$photos->continent}}</option>
+                    <option value="{{$photos->id}}">{{$photos->image}}</option>
                 @endforeach
             </select>
         </div>

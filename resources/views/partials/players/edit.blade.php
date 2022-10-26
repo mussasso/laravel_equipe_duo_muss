@@ -1,6 +1,6 @@
 <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800 my-6">
     <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Modifier une Team</h2>
-    <form action="/team/{{$team->id}}" method="post" enctype="multipart/form-data">
+    <form action="/player/{{$player->id}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div>
@@ -41,14 +41,14 @@
         <div>
             <select name="team_id">
                 @foreach ($team as $teams)
-                    <option value="{{$teams->id}}">{{$teams->continent}}</option>
+                    <option value="{{$teams->id}}">{{$teams->name}}</option>
                 @endforeach
             </select>
         </div>
         <div>
             <select name="photo_id">
                 @foreach ($photo as $photos)
-                    <option value="{{$photos->id}}">{{$photos->continent}}</option>
+                    <option value="{{$photos->id}}">{{$photos->image}}</option>
                 @endforeach
             </select>
         </div>
