@@ -3,7 +3,6 @@
     @foreach ($others as $team)
     <div class="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
         <img class="object-cover w-full h-64" src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Article">
-    
         <div class="p-6">
             <div>
                 <span class="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">Pays: {{$team->land}}</span>

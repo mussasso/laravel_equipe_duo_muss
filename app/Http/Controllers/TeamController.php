@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Continent;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class TeamController extends Controller
@@ -18,9 +19,10 @@ class TeamController extends Controller
     {
         $teams = Team::all()->take(3);
         $completeteam = Team::all()->Where('maxplayers',"=",9);
-        $uncompleteteam = Team::all()->where('maxplayers','>',[9]);
-        $europeteam = Team::all()->Where('continent_id',"=","Europe");
-        $others = Team::all()->Where('$continent->continent',"!=","Europe");
+        $uncompleteteam = Team::all()->where('maxplayers','<',9);
+        $europeteam = Team::all()->Where('continent_id',"=",1);
+        $others = Team::all()->Where('continent_id',"!=",1);
+
         $continents = Continent::all();
         return view('welcome',compact('teams','continents','completeteam','uncompleteteam','europeteam','others'));
     }

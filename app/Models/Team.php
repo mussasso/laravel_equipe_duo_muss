@@ -11,4 +11,7 @@ class Team extends Model
     public function continent(){
         return $this->belongsTo(Continent::class);
     }
+    public function players(){
+        return $this->belongsTo(Player::class);
+    }
 }

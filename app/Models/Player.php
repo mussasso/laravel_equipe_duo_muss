@@ -14,4 +14,7 @@ class Player extends Model
     public function role(){
         return $this->belongsTo(Role::class);
     }
+    public function team(){
+        return $this->hasOne(Team::class);
+    }
 }

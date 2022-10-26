@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('content')
-    @include('pages.Team.Team')
-    @include('pages.uncompleteteam')
-    @include('pages.europeteam')
-    @include('pages.otherteam')
+    @include('partials.Team.Team')
+    @include('partials.uncompleteteam')
+    @include('partials.europeteam')
+    @include('partials.otherteam')
 @endsection
