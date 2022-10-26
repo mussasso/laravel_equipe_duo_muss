@@ -1,4 +1,4 @@
-<h1 class="text-white bg-white dark:bg-gray-900 text-center py-6">Team Incomplète</h1>
+<h1 class="text-white bg-white dark:bg-gray-900 text-center py-6">Other Team</h1>
 <section class="bg-white dark:bg-gray-900 flex flex-wrap justify-center gap-10">
     @foreach ($others as $team)
     <div class="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
