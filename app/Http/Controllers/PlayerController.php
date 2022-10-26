@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Photo;
 use App\Models\Player;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,7 +29,9 @@ class PlayerController extends Controller
     public function create()
     {
         $players = Player::all();
-        return view('pages.players.form', compact('players'));
+        $team= Team::all();
+        $photo= Photo::all();
+        return view('pages.players.form', compact('players', 'team', 'photo'));
     }
 
     /**
