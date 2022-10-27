@@ -8,16 +8,16 @@
     <div class="container px-6 py-10 mx-auto flex justify-center">
             <div>
                 <div>
-                    <img src="{{$player->photo->photo}}" alt="">
+                    <img src="{{$player->photo->image}}" alt="">
                     <h1 class="mt-6 text-xl font-semibold text-gray-800 dark:text-white">
                         Nom de l'équipe: {{ $player->name }}
                     </h1>
                     <h2 class="mt-6 text-xl font-semibold text-gray-800 dark:text-white">
                         Continent: {{ $player->lastname }}
                     </h2>
-                    {{-- <h2 class="mt-6 text-xl font-semibold text-gray-800 dark:text-white">
-                        Continent: {{ $player->continent->continent }}
-                    </h2> --}}
+                    <h2 class="mt-6 text-xl font-semibold text-gray-800 dark:text-white">
+                        {{-- Continent: {{ $player->continent->continent }} --}}
+                    </h2>
 
                     <hr class="w-32 my-6 text-blue-500">
 
@@ -34,10 +34,19 @@
                         Country: {{ $player->pays }}
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Role: {{ $player->role->role }}
+                        Role: {{ $player->role->attack }}
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Role: {{ $player->team->team }}
+                        Role: {{ $player->role->defence }}
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        Role: {{ $player->role->substitute }}
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        Role: {{ $player->role->middle }}
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        Role: {{ $player->team->name }}
                     </p>
                     
                     <div class="flex justify-center my-8 p-1.5 w-full inline-block sm:w-auto overflow-hidden bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-700">

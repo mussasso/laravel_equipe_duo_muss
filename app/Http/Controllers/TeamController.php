@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Continent;
+use App\Models\Photo;
+use App\Models\Player;
+use App\Models\Role;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,7 +27,9 @@ class TeamController extends Controller
         $others = Team::all()->Where('continent_id',"!=",1);
 
         $continents = Continent::all();
-        return view('welcome',compact('teams','continents','completeteam','uncompleteteam','europeteam','others'));
+        $players= Player::all();
+        $images = Photo::all();
+        return view('welcome',compact('images','teams','continents','completeteam','uncompleteteam','europeteam','others', 'players', 'images'));
     }
 
     /**
@@ -127,8 +132,11 @@ class TeamController extends Controller
 
     public function backoffice(){
         $teams = Team::all();
+        $players= Player::all();
+        $photo= Photo::all();
+        $role= Role::all();
         $continents = Continent::all();
-        return view('backoffice',compact('teams', 'continents'));
+        return view('backoffice',compact('teams', 'continents','players','photo','role'));
     }
 
     public function allteam(){

@@ -15,8 +15,8 @@ class ContinentController extends Controller
      */
     public function index()
     {
-        $continents = Continent::all();
-        return view('welcome',compact('continents'));
+        $continents= Continent::all();
+        return view('welcome', compact('continents'));
     }
 
     /**

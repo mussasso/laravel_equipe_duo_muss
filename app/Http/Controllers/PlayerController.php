@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Continent;
 use App\Models\Photo;
 use App\Models\Player;
+use App\Models\Role;
 use App\Models\Team;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
@@ -19,7 +21,7 @@ class PlayerController extends Controller
     public function index()
     {
         $players= Player::all();
-        return view('pages.players.players', compact('players'));
+        return view('welcome', compact('players'));
     }
 
     /**
@@ -32,7 +34,8 @@ class PlayerController extends Controller
         $players = Player::all();
         $team= Team::all();
         $photo= Photo::all();
-        return view('pages.players.form', compact('players', 'team', 'photo'));
+        $roles = Role::all();
+        return view('pages.players.form', compact('players', 'team', 'photo','roles'));
     }
 
     /**
@@ -43,6 +46,11 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
+        Storage::put('public/image/', $request->file('image'));
+        $newimage = new Photo();
+        $newimage->image = $request->file('image')->hashName();
+        $newimage->save();
+        
         $store= new Player();
         $store->name=$request->name;
         $store->lastname=$request->lastname;
@@ -51,9 +59,9 @@ class PlayerController extends Controller
         $store->email=$request->email;
         $store->genre=$request->genre;
         $store->pays=$request->pays;
-        $store->role_id=$request->role_id;
         $store->team_id=$request->team_id;
-        $store->photo_id=$request->file('image')->hashName();
+        $store->role_id = $request->role_id;
+        $store->photo_id = $newimage->id;
         $store->save();
         return redirect('/');
     }
@@ -64,9 +72,18 @@ class PlayerController extends Controller
      * @param  \App\Models\Player  $player
      * @return \Illuminate\Http\Response
      */
-    public function show(Player $player)
+    public function show($id)
     {
-        return view('pages.players.show', compact('player'));
+        $player= Player::find();
+        $team= Team::all();
+        $photo= Photo::find();
+        return view('pages.players.show', compact('player', 'team', 'photo'));
+    }
+    public function showbiz(Player $player)
+    {
+        $team= Team::all();
+        $photo= Photo::all();
+        return view('pages.players.showbiz', compact('player', 'team', 'photo'));
     }
 
     /**
@@ -77,7 +94,9 @@ class PlayerController extends Controller
      */
     public function edit(Player $player)
     {
-        return view('pages.players.edit', compact('player'));
+        $continent= Continent::all();
+        $team= Team::all();
+        return view('pages.players.edit', compact('player', 'continent', 'team'));
     }
 
     /**
@@ -89,19 +108,23 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        Storage::delete('public/img/'.$player->photo_id);
+        Storage::delete('public/image/'.$player->photo_id);
         $player->delete();
-        $player->name=$request->name;
-        $player->lastname=$request->lastname;
-        $player->age=$request->age;
-        $player->phone=$request->phone;
-        $player->email=$request->email;
-        $player->genre=$request->genre;
-        $player->pays=$request->pays;
-        $player->role_id=$request->role_id;
-        $player->team_id=$request->team_id;
-        $player->photo_id=$request->file('image')->hashName();
-        Storage::put('public/img/', $request->file('image'));
+        $newimage = new Photo();
+        $newimage->image = $request->file('photo_id')->hashName();
+        Storage::put('public/image/', $request->file('photo_id'));
+        $newimage->save();
+        
+        $player->name = $request->name;
+        $player->lastname = $request->lastname;
+        $player->age = $request->age;
+        $player->phone = $request->phone;
+        $player->email = $request->email;
+        $player->genre = $request->genre;
+        $player->pays = $request->pays;
+        $player->role_id = $request->role_id;
+        $player->team_id = $request->team_id;
+        $player->photo_id = $newimage->id;
         $player->save();
         return redirect('/');
     }
@@ -116,5 +139,10 @@ class PlayerController extends Controller
     {
         $player->delete();
         return redirect('/');
+    }
+
+    public function allplayers(){
+        $players = Player::all();
+        return view('pages.players.players', compact('players'));
     }
 }
