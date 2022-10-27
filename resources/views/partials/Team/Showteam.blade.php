@@ -26,9 +26,6 @@
                     <p class="text-sm text-gray-500 dark:text-gray-400">
                         Maxplayers: {{ $team->maxplayers }} Joueurs
                     </p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Role: {{ $team->role }}
-                    </p>
                 </div>
             </div>
     </div>

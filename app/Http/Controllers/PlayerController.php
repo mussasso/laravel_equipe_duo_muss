@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Photo;
 use App\Models\Player;
 use App\Models\Team;
+use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -53,9 +54,6 @@ class PlayerController extends Controller
         $store->role_id=$request->role_id;
         $store->team_id=$request->team_id;
         $store->photo_id=$request->file('image')->hashName();
-        Storage::put('public/img/', $request->file('image'));
-
-
         $store->save();
         return redirect('/');
     }
