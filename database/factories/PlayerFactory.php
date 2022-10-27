@@ -19,17 +19,17 @@ class PlayerFactory extends Factory
      */
     public function definition()
     {
-        $genre = ["homme",'Femme'];
-        return [
-            'name' => $this->faker->name(),
-            'lastname' => $this->faker->lastname(),
-            'age' => $this->faker->randomNumber(1,9),
-            'phone' => $this->faker->phoneNumber(),
-            'email' => $this->faker->email(),
-            'genre' => $genre[rand(1,count($genre)-1)],
-            'pays' => $this->faker->country(),
-            'role_id' => Role::inRandomOrder()->first()->id,
-            'team_id' => Team::inRandomOrder()->first()->id,
-        ];
+        // $genre = ["homme",'Femme'];
+        // return [
+        //     'name' => $this->faker->name(),
+        //     'lastname' => $this->faker->lastname(),
+        //     'age' => $this->faker->randomNumber(1,9),
+        //     'phone' => $this->faker->phoneNumber(),
+        //     'email' => $this->faker->email(),
+        //     'genre' => $genre[rand(1,count($genre)-1)],
+        //     'pays' => $this->faker->country(),
+        //     'role_id' => Role::inRandomOrder()->first()->id,
+        //     'team_id' => Team::inRandomOrder()->first()->id,
+        // ];
     }
 }

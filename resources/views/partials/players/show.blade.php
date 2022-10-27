@@ -8,45 +8,33 @@
     <div class="container px-6 py-10 mx-auto flex justify-center">
             <div>
                 <div>
-                    <img src="{{$player->photo->image}}" alt="">
+                    <img src="{{$player->image}}" alt="">
                     <h1 class="mt-6 text-xl font-semibold text-gray-800 dark:text-white">
-                        Nom de l'équipe: {{ $player->name }}
+                        Prénom du joueur: {{ $player->name }}
                     </h1>
                     <h2 class="mt-6 text-xl font-semibold text-gray-800 dark:text-white">
-                        Continent: {{ $player->lastname }}
+                        Nom du joueur: {{ $player->lastname }}
                     </h2>
-                    <h2 class="mt-6 text-xl font-semibold text-gray-800 dark:text-white">
-                        {{-- Continent: {{ $player->continent->continent }} --}}
-                    </h2>
-
+                    
                     <hr class="w-32 my-6 text-blue-500">
 
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Country: {{ $player->age }}
+                        Age: {{ $player->age }}
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                        City: {{ $player->phone }}
+                        Phone: {{ $player->phone }}
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Maxplayers: {{ $player->email }} Joueurs
+                        Email: {{ $player->email }} Joueurs
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
                         Country: {{ $player->pays }}
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Role: {{ $player->role->attack }}
+                        Role: {{ $player->role->role }}
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Role: {{ $player->role->defence }}
-                    </p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Role: {{ $player->role->substitute }}
-                    </p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Role: {{ $player->role->middle }}
-                    </p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">
-                        Role: {{ $player->team->name }}
+                        équipe: {{ $player->team->name }}
                     </p>
                     
                     <div class="flex justify-center my-8 p-1.5 w-full inline-block sm:w-auto overflow-hidden bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-700">

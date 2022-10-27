@@ -48,7 +48,7 @@
         <div>
             <select name="photo_id">
                 @foreach ($photo as $photos)
-                    <option value="">{{$photos->image}}</option>
+                    <option value="{{$photos->id}}">{{$photos->image}}</option>
                 @endforeach
             </select>
         </div>

@@ -74,13 +74,14 @@ class PlayerController extends Controller
      */
     public function show($id)
     {
-        $player= Player::find();
+        $player= Player::find($id);
         $team= Team::all();
-        $photo= Photo::find();
+        $photo= Photo::all();
         return view('pages.players.show', compact('player', 'team', 'photo'));
     }
-    public function showbiz(Player $player)
+    public function showbiz($id)
     {
+        $player = Player::find($id);
         $team= Team::all();
         $photo= Photo::all();
         return view('pages.players.showbiz', compact('player', 'team', 'photo'));
@@ -95,8 +96,9 @@ class PlayerController extends Controller
     public function edit(Player $player)
     {
         $continent= Continent::all();
+        $photo = Photo::all();
         $team= Team::all();
-        return view('pages.players.edit', compact('player', 'continent', 'team'));
+        return view('pages.players.edit', compact('photo','player', 'continent', 'team'));
     }
 
     /**
@@ -111,8 +113,8 @@ class PlayerController extends Controller
         Storage::delete('public/image/'.$player->photo_id);
         $player->delete();
         $newimage = new Photo();
-        $newimage->image = $request->file('photo_id')->hashName();
-        Storage::put('public/image/', $request->file('photo_id'));
+        $newimage->image = $request->file('image')->hashName();
+        Storage::put('public/image/', $request->file('image'));
         $newimage->save();
         
         $player->name = $request->name;
