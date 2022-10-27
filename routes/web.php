@@ -11,12 +11,16 @@ Route::resource('/team', TeamController::class);
 Route::resource('/continent', ContinentController::class);
 
 
+
 // Backoffice Team
 Route::get('/backoffice',[TeamController::class,'backoffice'])->name('backoffice');
+Route::get('/player',[PlayerController::class,'index']);
+Route::get('/player/show/{id}',[PlayerController::class,'showbiz']);
 
 // Backoffice Show Team
 
 Route::get('/team/table/{id}', [TeamController::class, 'showteamtable']);
+Route::get('/player/table/{id}', [PlayerController::class, 'Show']);
 
 //Welcome 
 
@@ -31,6 +35,9 @@ Route::get('/allteam', [TeamController::class, 'allteam'])->name('allteam');
 Route::resource('/photo',PhotoController::class);
 Route::resource('/role', RoleController::class );
 Route::resource('/player', PlayerController::class);
+
+// Player page
+Route::get('/allplayers',[PlayerController::class,'allplayers'])->name('allplayers');
 
 
 

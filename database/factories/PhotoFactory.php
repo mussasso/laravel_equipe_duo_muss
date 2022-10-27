@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Photo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,7 @@ class PhotoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            // 'photo_id' => Photo::inRandomOrder()->first()->id,
         ];
     }
 }

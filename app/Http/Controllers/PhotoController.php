@@ -39,9 +39,11 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
+        Storage::put('public/img/', $request->file('image'));
         $store= new Photo();
         $store->image=$request->file('image')->hashName();
-        Storage::put('public/img/', $request->file('image'));
+        $store->save();
+        return redirect('/');
     }
 
     /**

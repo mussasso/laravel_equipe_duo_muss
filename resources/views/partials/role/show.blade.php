@@ -8,10 +8,7 @@
             <div>
                 <div>
 
-                    <p class="text-sm text-gray-500 dark:text-gray-400">Attack: {{ $role->attack }}</p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">Middle: {{ $role->middle }}</p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">Defence: {{ $role->defence }}</p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">Substitute: {{ $role->substitute }}</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Attack: {{ $role->role }}</p>
                     
                     <div class="flex justify-center my-8 p-1.5 w-full inline-block sm:w-auto overflow-hidden bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-700">
                         <div class="space-y-2 sm:space-y-0 sm:flex sm:-mx-1">

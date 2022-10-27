@@ -38,13 +38,8 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $store= new Role();
-        $store->attack=$request->attack;
-        $store->middle=$request->middle;
-        $store->defence=$request->defence;
-        $store->substitute=$request->substitute;
-        
-
-
+        $store->role=$request->role;
+        // $store->substitute=$request->substitute;
         $store->save();
         return redirect('/');
     }
@@ -81,13 +76,7 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
 
-        $role->attack=$request->attack;
-        $role->middle=$request->middle;
-        $role->defence=$request->defence;
-        $role->substitute=$request->substitute;
-        
-
-
+        $role->role=$request->role;
         $role->save();
         return redirect('/');
     }

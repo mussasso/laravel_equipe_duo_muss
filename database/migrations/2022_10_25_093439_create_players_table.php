@@ -18,13 +18,13 @@ return new class extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->integer('age');
-            $table->integer('phone');
+            $table->string('phone');
             $table->text('email');
             $table->string('genre');
-            $table->string('pays');
-            $table->foreignId('role_id')->constrained();
-            $table->foreignId('team_id')->constrained();
-            $table->foreignId('photo_id')->constrained();
+            $table->string('pays')->nullable();
+            $table->foreignId('role_id')->constrained()->nullable();
+            $table->foreignId('team_id')->constrained()->nullable();
+            $table->foreignId('photo_id')->constrained()->nullable();
             $table->timestamps();
         });
     }
