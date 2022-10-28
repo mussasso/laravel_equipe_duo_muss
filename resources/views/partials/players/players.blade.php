@@ -2,7 +2,7 @@
 <section class="bg-white dark:bg-gray-900 flex flex-wrap justify-center gap-10">
     @foreach ($players as $player)
     <div class="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <img class="object-cover w-full h-64" src="{{asset('storage/image/' . $player->)}}" alt="Article">
+        <img class="object-cover w-full h-64" src="{{asset('storage/image/'.$player->image)}}" alt="Article">
     
         <div class="p-6">
             <div>
