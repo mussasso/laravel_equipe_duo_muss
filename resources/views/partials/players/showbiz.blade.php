@@ -15,9 +15,6 @@
                     <h2 class="mt-6 text-xl font-semibold text-gray-800 dark:text-white">
                         Nom du joueur: {{ $player->lastname }}
                     </h2>
-                    <h2 class="mt-6 text-xl font-semibold text-gray-800 dark:text-white">
-                        Continent: {{ $player->continent->continent }}
-                    </h2>
 
                     <hr class="w-32 my-6 text-blue-500">
 

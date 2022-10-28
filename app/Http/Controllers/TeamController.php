@@ -25,7 +25,6 @@ class TeamController extends Controller
         $uncompleteteam = Team::all()->where('maxplayers','<',9);
         $europeteam = Team::all()->Where('continent_id',"=",1);
         $others = Team::all()->Where('continent_id',"!=",1);
-
         $continents = Continent::all();
         $players= Player::all();
         $images = Photo::all();
@@ -78,7 +77,8 @@ class TeamController extends Controller
     public function show(Team $team)
     {
         $continent = Continent::all();
-        return view('pages.Team.Showteam', compact('team','continent'));
+        $player = Player::all();
+        return view('pages.Team.Showteam', compact('team','continent','player'));
     }
 
     /**
@@ -90,7 +90,8 @@ class TeamController extends Controller
     public function edit(Team $team)
     {
         $continent = Continent::all();
-        return view('pages.Team.Backeditteam',compact('team','continent'));
+        $player = Player::all();
+        return view('pages.Team.Backeditteam',compact('team','continent','player'));
     }
 
     /**
@@ -141,7 +142,8 @@ class TeamController extends Controller
 
     public function allteam(){
         $allteams = Team::all();
-        return view('pages.Allteams',compact('allteams'));
+        $player = Player::all();
+        return view('pages.Allteams',compact('allteams','player'));
     }
 
     public function showteamtable($id){

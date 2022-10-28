@@ -98,7 +98,8 @@ class PlayerController extends Controller
         $continent= Continent::all();
         $photo = Photo::all();
         $team= Team::all();
-        return view('pages.players.edit', compact('photo','player', 'continent', 'team'));
+        $roles = Role::all();
+        return view('pages.players.edit', compact('photo','player', 'continent', 'team','roles'));
     }
 
     /**
@@ -111,8 +112,8 @@ class PlayerController extends Controller
     public function update(Request $request, Player $player)
     {
         Storage::delete('public/image/'.$player->photo_id);
-        $player->delete();
         $newimage = new Photo();
+        $newimage->delete();
         $newimage->image = $request->file('image')->hashName();
         Storage::put('public/image/', $request->file('image'));
         $newimage->save();
