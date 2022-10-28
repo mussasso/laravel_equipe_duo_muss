@@ -8,6 +8,7 @@ use App\Models\Player;
 use App\Models\Role;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class TeamController extends Controller
@@ -21,9 +22,9 @@ class TeamController extends Controller
     {
         $teams = Team::all()->take(3);
         $completeteam = Team::all()->Where('maxplayers',"=",9);
-        $uncompleteteam = Team::all()->take(2)->Where('maxplayers',">=",9);
-        $europeteam = Team::all()->Where('continent_id',"=","Europe");
-        $others = Team::all()->Where('continent_id',"=","Amerique");
+        $uncompleteteam = Team::all()->where('maxplayers','<',9);
+        $europeteam = Team::all()->Where('continent_id',"=",1);
+        $others = Team::all()->Where('continent_id',"!=",1);
         $continents = Continent::all();
         $players= Player::all();
         $images = Photo::all();
@@ -76,7 +77,8 @@ class TeamController extends Controller
     public function show(Team $team)
     {
         $continent = Continent::all();
-        return view('pages.Team.Showteam', compact('team','continent'));
+        $player = Player::all();
+        return view('pages.Team.Showteam', compact('team','continent','player'));
     }
 
     /**
@@ -88,7 +90,8 @@ class TeamController extends Controller
     public function edit(Team $team)
     {
         $continent = Continent::all();
-        return view('pages.Team.Backeditteam',compact('team','continent'));
+        $player = Player::all();
+        return view('pages.Team.Backeditteam',compact('team','continent','player'));
     }
 
     /**
@@ -139,7 +142,8 @@ class TeamController extends Controller
 
     public function allteam(){
         $allteams = Team::all();
-        return view('pages.Allteams',compact('allteams'));
+        $player = Player::all();
+        return view('pages.Allteams',compact('allteams','player'));
     }
 
     public function showteamtable($id){

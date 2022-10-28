@@ -6,11 +6,11 @@
     
         <div class="p-6">
             <div>
-                <span class="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">Pays: {{$player->name}}</span>
-                <a href="#" class="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabindex="0" role="link">Nom de l'équipe: {{$player->lastname}}</a>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Role: {{$player->age}}</p>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Max players: {{$player->pays}}</p>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Continent: {{$player->team->name}}</p></p>
+                <span class="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">Prénom: {{$player->name}}</span>
+                <a href="#" class="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabindex="0" role="link">Nom: {{$player->lastname}}</a>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Age: {{$player->age}}</p>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Pays: {{$player->pays}}</p>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Team: {{$player->team->name}}</p>
             </div>
             <button
                     class=" my-5 px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"><a

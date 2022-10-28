@@ -21,9 +21,10 @@ class Player extends Model
     {
         return $this->belongsTo(Continent::class);
     }
+
     public function photo()
     {
-        return $this->hasOne(Photo::class);
+        return $this->belongsTo(Photo::class);
     }
     
 }

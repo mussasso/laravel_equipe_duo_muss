@@ -17,17 +17,15 @@ Route::get('/backoffice',[TeamController::class,'backoffice'])->name('backoffice
 Route::get('/player',[PlayerController::class,'index']);
 Route::get('/player/show/{id}',[PlayerController::class,'showbiz']);
 
-// Backoffice Show Team
 
+// Backoffice Show Team
 Route::get('/team/table/{id}', [TeamController::class, 'showteamtable']);
 Route::get('/player/table/{id}', [PlayerController::class, 'Show']);
 
 //Welcome 
-
 Route::get('/',[TeamController::class, 'index']);
 
 // Allteam
-
 Route::get('/allteam', [TeamController::class, 'allteam'])->name('allteam');
 
 

@@ -10,6 +10,7 @@
                 <a href="#" class="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabindex="0" role="link">Nom de l'équipe: {{$team->name}}</a>
                 {{-- <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Role: {{$team->role}}</p> --}}
                 <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Max players: {{$team->maxplayers}}</p>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Actual Player: </p>
                 <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Continent: {{$team->continent->continent}}</p></p>
             </div>
             <button

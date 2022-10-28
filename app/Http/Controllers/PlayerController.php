@@ -7,6 +7,7 @@ use App\Models\Photo;
 use App\Models\Player;
 use App\Models\Role;
 use App\Models\Team;
+use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -73,13 +74,14 @@ class PlayerController extends Controller
      */
     public function show($id)
     {
-        $player= Player::find();
+        $player= Player::find($id);
         $team= Team::all();
-        $photo= Photo::find();
+        $photo= Photo::all();
         return view('pages.players.show', compact('player', 'team', 'photo'));
     }
-    public function showbiz(Player $player)
+    public function showbiz($id)
     {
+        $player = Player::find($id);
         $team= Team::all();
         $photo= Photo::all();
         return view('pages.players.showbiz', compact('player', 'team', 'photo'));
@@ -94,8 +96,10 @@ class PlayerController extends Controller
     public function edit(Player $player)
     {
         $continent= Continent::all();
+        $photo = Photo::all();
         $team= Team::all();
-        return view('pages.players.edit', compact('player', 'continent', 'team'));
+        $roles = Role::all();
+        return view('pages.players.edit', compact('photo','player', 'continent', 'team','roles'));
     }
 
     /**
@@ -108,10 +112,10 @@ class PlayerController extends Controller
     public function update(Request $request, Player $player)
     {
         Storage::delete('public/image/'.$player->photo_id);
-        $player->delete();
         $newimage = new Photo();
-        $newimage->image = $request->file('photo_id')->hashName();
-        Storage::put('public/image/', $request->file('photo_id'));
+        $newimage->delete();
+        $newimage->image = $request->file('image')->hashName();
+        Storage::put('public/image/', $request->file('image'));
         $newimage->save();
         
         $player->name = $request->name;
