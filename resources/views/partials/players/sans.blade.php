@@ -1,6 +1,6 @@
 <h1 class="text-white bg-white dark:bg-gray-900 text-center py-6">tous les joueurs</h1>
 <section class="bg-white dark:bg-gray-900 flex flex-wrap justify-center gap-10">
-    @foreach ($players as $player)
+    @foreach ($sans as $player)
     <div class="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
         <img class="object-cover w-full h-64" src="{{asset('storage/image/' . $player->photo->image)}}" alt="Article">
     

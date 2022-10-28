@@ -4,4 +4,8 @@
     @include('partials.uncompleteteam')
     @include('partials.europeteam')
     @include('partials.otherteam')
+    @include('partials.players.homme')
+    @include('partials.players.femmes')
+    @include('partials.players.avec')
+    @include('partials.players.sans')
 @endsection

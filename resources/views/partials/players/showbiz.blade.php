@@ -34,7 +34,7 @@
                         Role: {{ $player->role->role }}
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                        équipe: {{ $player->team->name }}
+                        <a href="/team/{{$teams->id}}">équipe: {{ $player->team->name }}</a>
                     </p>
                 </div>
             </div>

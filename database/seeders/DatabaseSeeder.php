@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ContinentSeeder::class,
             TeamSeeder::class,
-            // RoleSeeder::class,
-            // PhotoSeeder::class,
-            // PlayerSeeder::class,
+            RoleSeeder::class,
+            PhotoSeeder::class,
+            PlayerSeeder::class,
         ]);
     }
 }

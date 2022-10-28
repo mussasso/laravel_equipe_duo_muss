@@ -16,19 +16,19 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        //  DB::table('roles')->insert([
-        //     [
-        //         "role" => "attack",
-        //     ],
-        //     [
-        //         "role" => "middle",
-        //     ],
-        //     [
-        //         "role" => "defence",
-        //     ],
-        //     [
-        //         "role" => "substitute",
-        //     ]
-        // ]);
+        DB::table('roles')->insert([
+            [
+                "role" => "attack",
+            ],
+            [
+                "role" => "middle",
+            ],
+            [
+                "role" => "defence",
+            ],
+            [
+                "role" => "substitute",
+            ]
+        ]);
     }
 }

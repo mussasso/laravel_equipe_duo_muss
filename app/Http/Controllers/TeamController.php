@@ -27,8 +27,12 @@ class TeamController extends Controller
         $others = Team::all()->Where('continent_id',"!=",1);
         $continents = Continent::all();
         $players= Player::all();
+        $hommes= Player::all()->where('genre','=', 'homme');
+        $femmes= Player::all()->where('genre','=', 'femme');
+        $avec= Player::all()->where('team','!=', null);
+        $sans= Player::all()->where('team','=', null);
         $images = Photo::all();
-        return view('welcome',compact('images','teams','continents','completeteam','uncompleteteam','europeteam','others', 'players', 'images'));
+        return view('welcome',compact('images','teams','continents','completeteam','avec', 'sans','hommes','femmes','uncompleteteam','europeteam','others', 'players', 'images'));
     }
 
     /**
