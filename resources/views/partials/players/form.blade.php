@@ -50,6 +50,7 @@
         </div>
 
         <div>
+            <label class="text-gray-700 dark:text-gray-200" for="username">Equipe du joueur:</label>
             <select name="team_id">
                 @foreach ($team as $teams)
                     <option value="{{ $teams->id }}">{{ $teams->name }}</option>
@@ -58,6 +59,7 @@
         </div>
 
         <div>
+            <label class="text-gray-700 dark:text-gray-200" for="username">Role du Joueur:</label>
             <select name="role_id">
                 @foreach ($roles as $role)
                     <option value="{{$role->id}}">{{$role->role}}</option>

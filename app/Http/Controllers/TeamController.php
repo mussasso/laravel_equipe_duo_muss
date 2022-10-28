@@ -22,7 +22,7 @@ class TeamController extends Controller
     {
         $teams = Team::all()->take(3);
         $completeteam = Team::all()->Where('maxplayers',"=",9);
-        $uncompleteteam = Team::all()->where('maxplayers','<',9);
+        $uncompleteteam = Team::all()->take(2)->where('maxplayers','<=',5);
         $europeteam = Team::all()->Where('continent_id',"=",1);
         $others = Team::all()->Where('continent_id',"!=",1);
         $continents = Continent::all();
@@ -77,8 +77,8 @@ class TeamController extends Controller
     public function show(Team $team)
     {
         $continent = Continent::all();
-        $player = Player::all();
-        return view('pages.Team.Showteam', compact('team','continent','player'));
+        $players = Player::all();
+        return view('pages.Team.Showteam', compact('team','continent','players'));
     }
 
     /**
@@ -87,11 +87,12 @@ class TeamController extends Controller
      * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function edit(Team $team)
+    public function edit(Team $team,$id)
     {
         $continent = Continent::all();
         $player = Player::all();
-        return view('pages.Team.Backeditteam',compact('team','continent','player'));
+        $players = player::find($id);
+        return view('pages.Team.Backeditteam',compact('team','continent','player','players'));
     }
 
     /**
