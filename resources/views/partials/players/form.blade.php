@@ -1,3 +1,4 @@
+@extends('layout.flash')
 <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800 my-6">
     <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Ajouter un joueur</h2>
     <form action="/player" method="post" enctype="multipart/form-data">

@@ -83,8 +83,9 @@ class PlayerController extends Controller
     {
         $player = Player::find($id);
         $team= Team::all();
+        $teams= Team::find($id);
         $photo= Photo::all();
-        return view('pages.players.showbiz', compact('player', 'team', 'photo'));
+        return view('pages.players.showbiz', compact('player', 'team','teams', 'photo'));
     }
 
     /**

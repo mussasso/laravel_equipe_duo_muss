@@ -34,7 +34,7 @@
                         Role: {{ $player->role->role }}
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400">
-                        équipe: {{ $player->team->name }}
+                        <a href="/team/">équipe: {{ $player->team->name }}</a>
                     </p>
                     
                     <div class="flex justify-center my-8 p-1.5 w-full inline-block sm:w-auto overflow-hidden bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-700">
