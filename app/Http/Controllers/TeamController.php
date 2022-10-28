@@ -21,8 +21,8 @@ class TeamController extends Controller
     public function index()
     {
         $teams = Team::all()->take(3);
-        $completeteam = Team::all()->Where('maxplayers',"=",9);
-        $uncompleteteam = Team::all()->take(2)->where('maxplayers','<=',5);
+        $completeteam = Team::all()->Where('maxplayers',">=",9);
+        $uncompleteteam = Team::all()->where('maxplayers','<=',5);
         $europeteam = Team::all()->Where('continent_id',"=",1);
         $others = Team::all()->Where('continent_id',"!=",1);
         $continents = Continent::all();
@@ -87,12 +87,11 @@ class TeamController extends Controller
      * @param  \App\Models\Team  $team
      * @return \Illuminate\Http\Response
      */
-    public function edit(Team $team,$id)
+    public function edit(Team $team,)
     {
         $continent = Continent::all();
         $player = Player::all();
-        $players = player::find($id);
-        return view('pages.Team.Backeditteam',compact('team','continent','player','players'));
+        return view('pages.Team.Backeditteam',compact('team','continent','player'));
     }
 
     /**

@@ -17,10 +17,10 @@ class TeamSeeder extends Seeder
     public function run()
     {
         Team::factory()->count(10)->create();
-        DB::table('teams')->insert([
-            [
-                "role" => "attack",
-            ],
-        ]);
+        // DB::table('teams')->insert([
+        //     [
+        //         "role" => "attack",
+        //     ],
+        // ]);
     }
 }
